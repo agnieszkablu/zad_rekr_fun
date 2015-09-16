@@ -82,17 +82,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 	} 
 /* ------- Sposoby pozycjonowania dla tekstu ----- 
 
-1. Jezeli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy t─ů sam─ů szerokosc dla parent i child elemets, child ma text-align zeby wysrodkowac poziomo i wysokosc wynoszaca po┼éowe wysokosci parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding kt├│ry jest roznica w wysokosci obydwu elementow.
+1. Jezeli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy t─ů sam─ů szerokosc dla parent i child elemets, parent ma text-align zeby wysrodkowac poziomo. Child ma  wysokosc wynoszaca polowe wysokosci parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding kt├│ry jest roznica w wysokosci obydwu elementow.
 	.parentContainer{
 		display: block;
 		height: 200px;
 		width: 300px;
 		line-height: 20px;
+		text-align: center;
 	}
 	.child{
 		padding-top: 80px;
 		height: 120px;
-		text-align: center;
 		width: 300px;
 	}
 
@@ -105,7 +105,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 		height:200px;
 	}
 /*----------- Wysrodkowanie tylko w poziomie ----- 
-3. Margines- elemnt blokowy o ustalonej szeroko┼Ťci z automatycznym marginesem z prawej i lewej, zostanie wy┼Ťrodkowany
+3. Margines- elemnt blokowy o ustalonej szerokosci z automatycznym marginesem z prawej i lewej, zostanie wysrodkowany
 	.element{
 		display: block;
 		max-width: 900px;
