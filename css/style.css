@@ -67,7 +67,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 		align-items:center;
 	}
 
-2.	Ustawiamy position:absolute (w zaleznosci od potrzeb moze byc fixed), parent element musi byc wypozycjonowany (mie─ç ustalony position), oraz okreslona wysokosc. Element pozycjonowany jest na 50% od g├│ry i 50% od lewej, ustawiany jest rowniez margines na ujemne wartosci ktore stanowia 50% wysokosci elementu(g├│rny margines) i 50% szerokosci elementu pozycjonowanego(lewy margines).
+2. Ustawiamy position:absolute (w zaleznosci od potrzeb moze byc fixed), parent element musi byc wypozycjonowany (mie─ç ustalony position), oraz okreslona wysokosc. Element pozycjonowany jest na 50% od g├│ry i 50% od lewej, ustawiany jest rowniez margines na ujemne wartosci ktore stanowia 50% wysokosci elementu(g├│rny margines) i 50% szerokosci elementu pozycjonowanego(lewy margines).
 	.element{
 		position:absolute;
 		top:50%;
