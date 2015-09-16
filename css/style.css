@@ -225,7 +225,7 @@ button::-moz-focus-inner {
 
 /* --------------- MEDIA QUERIES -------------- */
 /*----------- Phones/Tablets ------------*/
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px), (max-device-width: 768px) {
   /* ------- MODAL ---------- */
   section {
     max-width: 95%;
@@ -243,16 +243,16 @@ button::-moz-focus-inner {
     border-radius: 0;
   }
 
-  .row {
+  .textContainer {
     height: 100%;
     overflow: auto;
     margin-bottom: 30px;
   }
-  .row::after {
+  .textContainer::after {
     content: "";
     display: none;
   }
-  .row p {
+  .textContainer p {
     display: block;
     float: none;
     width: 100%;

@@ -180,7 +180,7 @@ button{
 /* --------------- MEDIA QUERIES -------------- */
 
 /*----------- Phones/Tablets ------------*/
-@media  screen and (max-width: 768px){
+@media  screen and (max-width: 768px), (max-device-width: 768px){
 	/* ------- MODAL ---------- */
 	section{
 		max-width: 95%;
@@ -192,7 +192,7 @@ button{
 	  	@include transform(none);
 		@include border-radius(0);
 	}
-	.row{
+	.textContainer{
 	height: 100%;
 	overflow: auto;
 	margin-bottom: 30px;
