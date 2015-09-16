@@ -1,13 +1,21 @@
 @import "compass";
-/*-------- RESET ---------*/
+/*---------- RESET --------------*/
 @import "compass/reset";
-
-// --------- variables
+// --------- VARIABLES ---------
 $button-bg-color: #B283E8;
 $body-bg-color: #E8DD95;
 $modal-bg-color: #FFA7A4;
 $main-txt-color: #444;
-//---------- mixins
+//---------- MIXINS/FUNCTIONS ------------
+@function black($opacity){
+    @return rgba(0,0,0,$opacity);
+}
+@function white($opacity){
+    @return rgba(255,255,255,$opacity);
+}
+@mixin letterpress($color){
+    @include text-shadow(0 1px 0 $color);
+} 
 @mixin vert-centering{
 	display: table-cell;
 	text-align: center;
@@ -19,19 +27,9 @@ $main-txt-color: #444;
 	left:50%;
 	margin: $half-h 0 0 $half-w; 
 }
-@function black($opacity){
-    @return rgba(0,0,0,$opacity);
-}
-@function white($opacity){
-    @return rgba(255,255,255,$opacity);
-}
-@mixin letterpress($color){
-    @include text-shadow(0 1px 0 $color);
-} 
+/* -------- INNE SPOSOBY WYSRODKOWANIA ------
 
-/* -------- INNE SPOSOBY WYŚRODKOWANIA ------
-
-1. Flexbox- za jego pomocą każdy element wewnątrz .parentContainer będzie wyśrodkowany i pionowo i poziomo.
+1. Flexbox- za jego pomoca kazdy element wewnatrz .parentContainer bedzie wysrodkowany i pionowo i poziomo.
 	.parentContainer{
 		height: 200px;
 		width:400px;
@@ -40,15 +38,14 @@ $main-txt-color: #444;
 		align-items:center;
 	}
 
-2.	Ustawiamy position:absolute (w zależności od potrzeb może być fixed), parent element musi byc wypozycjonowany (mieć ustalony position), oraz określoną wysokość. Element pozycjonowany jest na 50% od góry i 50% od lewej, ustawiany jest również margines na ujemne wartości które stanowią 50% wysokości elementu(górny margines) i 50% szerokości elementu pozycjonowanego(lewy margines).
-
+2.	Ustawiamy position:absolute (w zaleznosci od potrzeb moze byc fixed), parent element musi byc wypozycjonowany (mieć ustalony position), oraz okreslona wysokosc. Element pozycjonowany jest na 50% od góry i 50% od lewej, ustawiany jest rowniez margines na ujemne wartosci ktore stanowia 50% wysokosci elementu(górny margines) i 50% szerokosci elementu pozycjonowanego(lewy margines).
 	.element{
 		position:absolute;
 		top:50%;
 		left:50%;
 		margin: -$half-h 0 0 -$half-w; 
 	}
-3. Sposób table-cell. Parent elementu pozycjonowanego powinien mieć ustawione display:table; i zdefiniowany height.
+3. Sposob table-cell. Parent, elementu pozycjonowanego powinien miec ustawione display:table; i zdefiniowany height. A element :
 	.element{
 		display: table-cell;
 		text-align: center;
@@ -56,7 +53,7 @@ $main-txt-color: #444;
 	} 
 /* ------- Sposoby pozycjonowania dla tekstu ----- 
 
-1. Jeżeli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy tą samą szerokość dla parent i child elemets, child ma text-align zeby wysrodkowac poziomo i wysokość wynoszącą połowę wysokości parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding który jest różnicą w wysokości obydwu elementów.
+1. Jezeli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy tą samą szerokosc dla parent i child elemets, child ma text-align zeby wysrodkowac poziomo i wysokosc wynoszaca połowe wysokosci parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding który jest roznica w wysokosci obydwu elementow.
 	.parentContainer{
 		display: block;
 		height: 200px;
@@ -70,7 +67,7 @@ $main-txt-color: #444;
 		width: 300px;
 	}
 
-2. Jeżeli znamy wymiary kontenera i mamy tylko jedną linię tekstu.
+2. Jezeli znamy wymiary kontenera i mamy tylko jedną linię tekstu.
 	.container{
 		display: block;
 		text-align:center;
@@ -78,7 +75,7 @@ $main-txt-color: #444;
 		width:300px;
 		height:200px;
 	}
-/*----------- Pozycjonowanie tylko w poziomie ----- 
+/*----------- Wysrodkowanie tylko w poziomie ----- 
 3. Margines- elemnt blokowy o ustalonej szerokości z automatycznym marginesem z prawej i lewej, zostanie wyśrodkowany
 	.element{
 		display: block;
@@ -107,9 +104,6 @@ html {
 body{
 	background-color: $body-bg-color;
 	color: $main-txt-color;	
-}
-.hide{
-	display: none;
 }
 /* ------- MODAL ---------- */
 section{
@@ -182,14 +176,10 @@ button{
 	padding: 0 1px;
 	@include border-radius(100%);
 }
-/* --------------- VIDEO -------------- */
-video{
-	width: 300px;
-	height: 300px;
-	background-color: #fff;
-}
+
 /* --------------- MEDIA QUERIES -------------- */
 
+/*----------- Phones/Tablets ------------*/
 @media  screen and (max-width: 768px){
 	/* ------- MODAL ---------- */
 	section{
