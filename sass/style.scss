@@ -1,0 +1,216 @@
+@import "compass";
+/*-------- RESET ---------*/
+@import "compass/reset";
+
+// --------- variables
+$button-bg-color: #B283E8;
+$body-bg-color: #E8DD95;
+$modal-bg-color: #FFA7A4;
+$main-txt-color: #444;
+//---------- mixins
+@mixin vert-centering{
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+@mixin vert-cent-nontxt($half-h, $half-w){
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin: $half-h 0 0 $half-w; 
+}
+@function black($opacity){
+    @return rgba(0,0,0,$opacity)
+}
+@function white($opacity){
+    @return rgba(255,255,255,$opacity)
+}
+@mixin letterpress($color){
+    @include text-shadow(0 1px 0 $color);
+} 
+
+/* -------- INNE SPOSOBY WYŚRODKOWANIA ------
+
+1. Flexbox- za jego pomocą każdy element wewnątrz .parentContainer będzie wyśrodkowany i pionowo i poziomo.
+	.parentContainer{
+		height: 200px;
+		width:400px;
+		display: flex;
+		justify-content:center;
+		align-items:center;
+	}
+
+2.	Ustawiamy position:absolute (w zależności od potrzeb może być fixed), parent element musi byc wypozycjonowany (mieć ustalony position), oraz określoną wysokość. Element pozycjonowany jest na 50% od góry i 50% od lewej, ustawiany jest również margines na ujemne wartości które stanowią 50% wysokości elementu(górny margines) i 50% szerokości elementu pozycjonowanego(lewy margines).
+
+	.element{
+		position:absolute;
+		top:50%;
+		left:50%;
+		margin: -$half-h 0 0 -$half-w; 
+	}
+3. Sposób table-cell. Parent elementu pozycjonowanego powinien mieć ustawione display:table; i zdefiniowany height.
+	.element{
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	} 
+/* ------- Sposoby pozycjonowania dla tekstu ----- 
+
+1. Jeżeli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy tą samą szerokość dla parent i child elemets, child ma text-align zeby wysrodkowac poziomo i wysokość wynoszącą połowę wysokości parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding który jest różnicą w wysokości obydwu elementów.
+	.parentContainer{
+		display: block;
+		height: 200px;
+		width: 300px;
+		line-height: 20px;
+	}
+	.child{
+		padding-top: 80px;
+		height: 120px;
+		text-align: center;
+		width: 300px;
+	}
+
+2. Jeżeli znamy wymiary kontenera i mamy tylko jedną linię tekstu.
+	.container{
+		display: block;
+		text-align:center;
+		line-height:200px;
+		width:300px;
+		height:200px;
+	}
+/*----------- Pozycjonowanie tylko w poziomie ----- 
+3. Margines- elemnt blokowy o ustalonej szerokości z automatycznym marginesem z prawej i lewej, zostanie wyśrodkowany
+	.element{
+	display: block;
+	max-width: 900px;
+	margin: 0 auto;
+	}
+4. Text-align
+	.element{
+		display:block;
+		text-align: center;
+	}
+
+*/
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+/* -------- MAIN STYLES ------- */
+*{
+	box-sizing: border-box;
+	font-size: 16px;
+	font-family: Helvetica, Arial, sans-serif ;
+}
+body{
+	background-color: $body-bg-color;
+	color: $main-txt-color;	
+}
+/* ------- MODAL ---------- */
+section{
+	background-color: $modal-bg-color;
+	min-height: 300px;
+	max-width: 500px;
+	position: fixed;
+    top: 50%;
+    left: 50%;
+  	@include transform(translate(-50%, -50%));
+  	padding: 20px;
+	@include border-radius(10px);
+	z-index: 9999;
+}
+.row{
+	height: 300px;
+	overflow: auto;
+	margin-bottom: 30px;
+
+	&::after {
+	    content: "";
+	    clear: both;
+	    display: block;
+	}
+	p{
+		display: block;
+		float: left;
+		width: 50%;
+		padding: 5px;
+		text-align: justify;
+	}
+}
+/* ------- BUTTONS ---------- */
+button{
+	background-color: $button-bg-color;
+	color: rgba(255, 255, 255, 1);
+	border: none;
+	cursor: pointer;
+	@include transition(all .3s ease);
+	&:hover{
+		background-color: darken($button-bg-color,5);
+	}
+	&:focus{
+		box-shadow: 0 0 3px 2px lighten($button-bg-color,2);	
+		outline: none;
+	}
+	&::-moz-focus-inner {
+		border:0;
+	}
+}
+#watch{
+	width: 130px;
+	height: 35px;
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	margin: 0 0 0 -65px;
+	font-weight: 600;
+	@include letterpress(black(0.4));
+	@include border-radius(5px);
+	padding: 0;
+}
+#close{
+	position: absolute;
+	top:0;
+	right: 0;
+	width: 24px;
+	height: 22px;
+	line-height: 22px;
+	padding: 0 1px;
+	@include border-radius(100%);
+}
+
+/* --------------- MEDIA QUERIES -------------- */
+
+@media  screen and (max-width: 768px){
+	/* ------- MODAL ---------- */
+	section{
+		max-width: 95%;
+		min-height: 0;
+		margin: 10px auto;
+		position: relative;
+	    top: 0;
+	    left: 0;
+	  	@include transform(none);
+		@include border-radius(0);
+	}
+	.row{
+	height: 100%;
+	overflow: auto;
+	margin-bottom: 30px;
+		&::after {
+		    content: "";
+		    display: none;
+		}
+		p{
+			display: block;
+			float: none;
+			width: 100%;
+		}
+	}
+	/* ------- BUTTONS ---------- */
+	#close{
+		display: none;
+	}
+
+}

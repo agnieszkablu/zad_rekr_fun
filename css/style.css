@@ -1,0 +1,265 @@
+@charset "UTF-8";
+/*-------- RESET ---------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* -------- INNE SPOSOBY WY┼ÜRODKOWANIA ------
+
+1. Flexbox- za jego pomoc─ů ka┼╝dy element wewn─ůtrz .parentContainer b─Ödzie wy┼Ťrodkowany i pionowo i poziomo.
+	.parentContainer{
+		height: 200px;
+		width:400px;
+		display: flex;
+		justify-content:center;
+		align-items:center;
+	}
+
+2.	Ustawiamy position:absolute (w zale┼╝no┼Ťci od potrzeb mo┼╝e by─ç fixed), parent element musi byc wypozycjonowany (mie─ç ustalony position), oraz okre┼Ťlon─ů wysoko┼Ť─ç. Element pozycjonowany jest na 50% od g├│ry i 50% od lewej, ustawiany jest r├│wnie┼╝ margines na ujemne warto┼Ťci kt├│re stanowi─ů 50% wysoko┼Ťci elementu(g├│rny margines) i 50% szeroko┼Ťci elementu pozycjonowanego(lewy margines).
+
+	.element{
+		position:absolute;
+		top:50%;
+		left:50%;
+		margin: -$half-h 0 0 -$half-w; 
+	}
+3. Spos├│b table-cell. Parent elementu pozycjonowanego powinien mie─ç ustawione display:table; i zdefiniowany height.
+	.element{
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	} 
+/* ------- Sposoby pozycjonowania dla tekstu ----- 
+
+1. Je┼╝eli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy t─ů sam─ů szeroko┼Ť─ç dla parent i child elemets, child ma text-align zeby wysrodkowac poziomo i wysoko┼Ť─ç wynosz─ůc─ů po┼éow─Ö wysoko┼Ťci parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding kt├│ry jest r├│┼╝nic─ů w wysoko┼Ťci obydwu element├│w.
+	.parentContainer{
+		display: block;
+		height: 200px;
+		width: 300px;
+		line-height: 20px;
+	}
+	.child{
+		padding-top: 80px;
+		height: 120px;
+		text-align: center;
+		width: 300px;
+	}
+
+2. Je┼╝eli znamy wymiary kontenera i mamy tylko jedn─ů lini─Ö tekstu.
+	.container{
+		display: block;
+		text-align:center;
+		line-height:200px;
+		width:300px;
+		height:200px;
+	}
+/*----------- Pozycjonowanie tylko w poziomie ----- 
+3. Margines- elemnt blokowy o ustalonej szeroko┼Ťci z automatycznym marginesem z prawej i lewej, zostanie wy┼Ťrodkowany
+	.element{
+	display: block;
+	max-width: 900px;
+	margin: 0 auto;
+	}
+4. Text-align
+	.element{
+		display:block;
+		text-align: center;
+	}
+
+*/
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* -------- MAIN STYLES ------- */
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #E8DD95;
+  color: #444;
+}
+
+/* ------- MODAL ---------- */
+section {
+  background-color: #FFA7A4;
+  min-height: 300px;
+  max-width: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  z-index: 9999;
+}
+
+.row {
+  height: 300px;
+  overflow: auto;
+  margin-bottom: 30px;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+.row p {
+  display: block;
+  float: left;
+  width: 50%;
+  padding: 5px;
+  text-align: justify;
+}
+
+/* ------- BUTTONS ---------- */
+button {
+  background-color: #B283E8;
+  color: white;
+  border: none;
+  cursor: pointer;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+button:hover {
+  background-color: #a56de4;
+}
+button:focus {
+  box-shadow: 0 0 3px 2px #b78cea;
+  outline: none;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+
+#watch {
+  width: 130px;
+  height: 35px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  margin: 0 0 0 -65px;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 0;
+}
+
+#close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 24px;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+}
+
+/* --------------- MEDIA QUERIES -------------- */
+@media screen and (max-width: 768px) {
+  /* ------- MODAL ---------- */
+  section {
+    max-width: 95%;
+    min-height: 0;
+    margin: 10px auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    -moz-transform: none;
+    -ms-transform: none;
+    -webkit-transform: none;
+    transform: none;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+  }
+
+  .row {
+    height: 100%;
+    overflow: auto;
+    margin-bottom: 30px;
+  }
+  .row::after {
+    content: "";
+    display: none;
+  }
+  .row p {
+    display: block;
+    float: none;
+    width: 100%;
+  }
+
+  /* ------- BUTTONS ---------- */
+  #close {
+    display: none;
+  }
+}
