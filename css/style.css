@@ -155,17 +155,17 @@ section {
   z-index: 9999;
 }
 
-.row {
+.textContainer {
   height: 300px;
   overflow: auto;
   margin-bottom: 30px;
 }
-.row::after {
+.textContainer::after {
   content: "";
   clear: both;
   display: block;
 }
-.row p {
+.textContainer p {
   display: block;
   float: left;
   width: 50%;
