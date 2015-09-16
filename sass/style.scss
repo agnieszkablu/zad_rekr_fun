@@ -81,9 +81,9 @@ $main-txt-color: #444;
 /*----------- Pozycjonowanie tylko w poziomie ----- 
 3. Margines- elemnt blokowy o ustalonej szerokości z automatycznym marginesem z prawej i lewej, zostanie wyśrodkowany
 	.element{
-	display: block;
-	max-width: 900px;
-	margin: 0 auto;
+		display: block;
+		max-width: 900px;
+		margin: 0 auto;
 	}
 4. Text-align
 	.element{

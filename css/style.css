@@ -108,9 +108,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /*----------- Pozycjonowanie tylko w poziomie ----- 
 3. Margines- elemnt blokowy o ustalonej szeroko┼Ťci z automatycznym marginesem z prawej i lewej, zostanie wy┼Ťrodkowany
 	.element{
-  	display: block;
-  	max-width: 900px;
-  	margin: 0 auto;
+		display: block;
+		max-width: 900px;
+		margin: 0 auto;
 	}
 4. Text-align
 	.element{
