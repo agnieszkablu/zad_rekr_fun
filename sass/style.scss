@@ -20,10 +20,10 @@ $main-txt-color: #444;
 	margin: $half-h 0 0 $half-w; 
 }
 @function black($opacity){
-    @return rgba(0,0,0,$opacity)
+    @return rgba(0,0,0,$opacity);
 }
 @function white($opacity){
-    @return rgba(255,255,255,$opacity)
+    @return rgba(255,255,255,$opacity);
 }
 @mixin letterpress($color){
     @include text-shadow(0 1px 0 $color);
