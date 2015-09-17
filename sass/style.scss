@@ -1,11 +1,17 @@
 @import "compass";
-/*---------- RESET --------------*/
-@import "compass/reset";
+/* ========================
+				plik style.css jest nieskompresowany, zeby latwiej go bylo odczytac 
+===========================*/
+
 // --------- VARIABLES ---------
+//---------- Fonts
+$main-font-family: Helvetica, Arial, sans-serif;
+$main-font-size: 16px;
+//--------- Colors
+$main-txt-color: #444;
 $button-bg-color: #B283E8;
 $body-bg-color: #E8DD95;
 $modal-bg-color: #FFA7A4;
-$main-txt-color: #444;
 //---------- MIXINS/FUNCTIONS ------------
 @function black($opacity){
     @return rgba(0,0,0,$opacity);
@@ -53,7 +59,7 @@ $main-txt-color: #444;
 	} 
 /* ------- Sposoby pozycjonowania dla tekstu ----- 
 
-1. Jezeli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy tą samą szerokosc dla parent i child elemets, parent ma text-align zeby wysrodkowac poziomo. Child ma  wysokosc wynoszaca polowe wysokosci parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding który jest roznica w wysokosci obydwu elementow.
+1. Jezeli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy tą samą szerokosc dla parent i child elements, parent ma text-align zeby wysrodkowac poziomo. Child ma  wysokosc wynoszaca polowe wysokosci parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding który jest roznica w wysokosci obydwu elementow.
 	.parentContainer{
 		display: block;
 		height: 200px;
@@ -89,7 +95,8 @@ $main-txt-color: #444;
 	}
 
 */
-
+/*---------- RESET --------------*/
+@import "compass/reset";
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -97,9 +104,9 @@ html {
 }
 /* -------- MAIN STYLES ------- */
 *{
-	box-sizing: border-box;
-	font-size: 16px;
-	font-family: Helvetica, Arial, sans-serif ;
+	@include box-sizing(border-box);
+	font-size: $main-font-size;
+	font-family: $main-font-family;
 }
 body{
 	background-color: $body-bg-color;
@@ -164,16 +171,16 @@ button{
 	font-weight: 600;
 	@include letterpress(black(0.4));
 	@include border-radius(5px);
-	padding: 0;
 }
 #close{
 	position: absolute;
 	top:0;
 	right: 0;
-	width: 24px;
+	width: 22px;
 	height: 22px;
-	line-height: 22px;
-	padding: 0 1px;
+	padding: 0;
+	text-align: center;
+	font-weight: 500;
 	@include border-radius(100%);
 }
 
@@ -193,15 +200,12 @@ button{
 		@include border-radius(0);
 	}
 	.textContainer{
-	height: 100%;
-	overflow: auto;
-	margin-bottom: 30px;
+		height: 100%;
+
 		&::after {
-		    content: "";
 		    display: none;
 		}
 		p{
-			display: block;
 			float: none;
 			width: 100%;
 		}

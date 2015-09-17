@@ -1,4 +1,69 @@
 @charset "UTF-8";
+/* ========================
+				plik style.css jest nieskompresowany, zeby latwiej go bylo odczytac 
+===========================*/
+/* -------- INNE SPOSOBY WYSRODKOWANIA ------
+
+1. Flexbox- za jego pomoca kazdy element wewnatrz .parentContainer bedzie wysrodkowany i pionowo i poziomo.
+	.parentContainer{
+		height: 200px;
+		width:400px;
+		display: flex;
+		justify-content:center;
+		align-items:center;
+	}
+
+2. Ustawiamy position:absolute (w zaleznosci od potrzeb moze byc fixed), parent element musi byc wypozycjonowany (mie─ç ustalony position), oraz okreslona wysokosc. Element pozycjonowany jest na 50% od g├│ry i 50% od lewej, ustawiany jest rowniez margines na ujemne wartosci ktore stanowia 50% wysokosci elementu(g├│rny margines) i 50% szerokosci elementu pozycjonowanego(lewy margines).
+	.element{
+		position:absolute;
+		top:50%;
+		left:50%;
+		margin: -$half-h 0 0 -$half-w; 
+	}
+3. Sposob table-cell. Parent, elementu pozycjonowanego powinien miec ustawione display:table; i zdefiniowany height. A element :
+	.element{
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	} 
+/* ------- Sposoby pozycjonowania dla tekstu ----- 
+
+1. Jezeli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy t─ů sam─ů szerokosc dla parent i child elements, parent ma text-align zeby wysrodkowac poziomo. Child ma  wysokosc wynoszaca polowe wysokosci parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding kt├│ry jest roznica w wysokosci obydwu elementow.
+	.parentContainer{
+		display: block;
+		height: 200px;
+		width: 300px;
+		line-height: 20px;
+		text-align: center;
+	}
+	.child{
+		padding-top: 80px;
+		height: 120px;
+		width: 300px;
+	}
+
+2. Jezeli znamy wymiary kontenera i mamy tylko jedn─ů lini─Ö tekstu.
+	.container{
+		display: block;
+		text-align:center;
+		line-height:200px;
+		width:300px;
+		height:200px;
+	}
+/*----------- Wysrodkowanie tylko w poziomie ----- 
+3. Margines- elemnt blokowy o ustalonej szerokosci z automatycznym marginesem z prawej i lewej, zostanie wysrodkowany
+	.element{
+		display: block;
+		max-width: 900px;
+		margin: 0 auto;
+	}
+4. Text-align
+	.element{
+		display:block;
+		text-align: center;
+	}
+
+*/
 /*---------- RESET --------------*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -56,68 +121,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* -------- INNE SPOSOBY WYSRODKOWANIA ------
-
-1. Flexbox- za jego pomoca kazdy element wewnatrz .parentContainer bedzie wysrodkowany i pionowo i poziomo.
-	.parentContainer{
-		height: 200px;
-		width:400px;
-		display: flex;
-		justify-content:center;
-		align-items:center;
-	}
-
-2. Ustawiamy position:absolute (w zaleznosci od potrzeb moze byc fixed), parent element musi byc wypozycjonowany (mie─ç ustalony position), oraz okreslona wysokosc. Element pozycjonowany jest na 50% od g├│ry i 50% od lewej, ustawiany jest rowniez margines na ujemne wartosci ktore stanowia 50% wysokosci elementu(g├│rny margines) i 50% szerokosci elementu pozycjonowanego(lewy margines).
-	.element{
-		position:absolute;
-		top:50%;
-		left:50%;
-		margin: -$half-h 0 0 -$half-w; 
-	}
-3. Sposob table-cell. Parent, elementu pozycjonowanego powinien miec ustawione display:table; i zdefiniowany height. A element :
-	.element{
-		display: table-cell;
-		text-align: center;
-		vertical-align: middle;
-	} 
-/* ------- Sposoby pozycjonowania dla tekstu ----- 
-
-1. Jezeli znamy wymiary kontenera i line-height tekstu- w tym wypadku dwie linie tekstu. Ustawiamy t─ů sam─ů szerokosc dla parent i child elemets, parent ma text-align zeby wysrodkowac poziomo. Child ma  wysokosc wynoszaca polowe wysokosci parent element plus dodatkowo tyle ile wynosi line-height z parent, do tego ustawiamy padding kt├│ry jest roznica w wysokosci obydwu elementow.
-	.parentContainer{
-		display: block;
-		height: 200px;
-		width: 300px;
-		line-height: 20px;
-		text-align: center;
-	}
-	.child{
-		padding-top: 80px;
-		height: 120px;
-		width: 300px;
-	}
-
-2. Jezeli znamy wymiary kontenera i mamy tylko jedn─ů lini─Ö tekstu.
-	.container{
-		display: block;
-		text-align:center;
-		line-height:200px;
-		width:300px;
-		height:200px;
-	}
-/*----------- Wysrodkowanie tylko w poziomie ----- 
-3. Margines- elemnt blokowy o ustalonej szerokosci z automatycznym marginesem z prawej i lewej, zostanie wysrodkowany
-	.element{
-		display: block;
-		max-width: 900px;
-		margin: 0 auto;
-	}
-4. Text-align
-	.element{
-		display:block;
-		text-align: center;
-	}
-
-*/
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -126,6 +129,8 @@ html {
 
 /* -------- MAIN STYLES ------- */
 * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 16px;
   font-family: Helvetica, Arial, sans-serif;
@@ -207,17 +212,17 @@ button::-moz-focus-inner {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  padding: 0;
 }
 
 #close {
   position: absolute;
   top: 0;
   right: 0;
-  width: 24px;
+  width: 22px;
   height: 22px;
-  line-height: 22px;
-  padding: 0 1px;
+  padding: 0;
+  text-align: center;
+  font-weight: 500;
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%;
@@ -245,15 +250,11 @@ button::-moz-focus-inner {
 
   .textContainer {
     height: 100%;
-    overflow: auto;
-    margin-bottom: 30px;
   }
   .textContainer::after {
-    content: "";
     display: none;
   }
   .textContainer p {
-    display: block;
     float: none;
     width: 100%;
   }
